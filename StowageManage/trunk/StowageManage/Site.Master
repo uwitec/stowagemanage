@@ -1,0 +1,87 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="StowageManage.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    库存管理系统
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">登录</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        欢迎使用 <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="注销" LogoutPageUrl="~/"/> ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
+                    EnableViewState="False" IncludeStyleBlock="False" Orientation="Horizontal" 
+                    StaticSubMenuIndent="16px">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="主页"/>
+                        <asp:MenuItem Text="库存管理" Value="库存管理">
+                            <asp:MenuItem Text="库存管理" Value="库存管理" 
+                                NavigateUrl="~/View/StockManager/StockManage.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="入库登记" Value="入库登记" 
+                                NavigateUrl="~/View/StorageManager/StorageAdd.aspx"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="出库管理" Value="出库管理"></asp:MenuItem>
+                        <asp:MenuItem Text="仓库管理" Value="仓库管理" 
+                            NavigateUrl="~/View/CangKuManager/CangkuManage.aspx">
+                            <asp:MenuItem NavigateUrl="~/View/CangKuManager/CangKuItem.aspx?option=add" 
+                                Text="添加仓库" Value="添加仓库"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/View/GoodsManager/GoodsManage.aspx" Text="物品管理" 
+                            Value="物品管理">
+                            <asp:MenuItem NavigateUrl="~/View/GoodsManager/GoodsItem.aspx?option=add" 
+                                Text="添加物品" Value="添加物品"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="人员管理" Value="人员管理" 
+                            NavigateUrl="~/View/Manager/Manager.aspx">
+                            <asp:MenuItem NavigateUrl="~/View/Manager/Manager_Item.aspx?option=add" 
+                                Text="添加人员" Value="添加人员"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="客户管理" Value="客户管理" 
+                            NavigateUrl="~/View/KeHuManager/KeHuManage.aspx">
+                            <asp:MenuItem NavigateUrl="~/View/KeHuManager/KeHuItem.aspx?option=add" 
+                                Text="添加客户" Value="添加客户"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="用户管理" Value="用户管理" 
+                            NavigateUrl="~/View/UserManager/UserManage.aspx">
+                            <asp:MenuItem NavigateUrl="~/View/UserManager/UserItem.aspx?option=add" 
+                                Text="添加新用户" Value="添加新用户"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="日志查询" Value="日志查询"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="关于"/>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>
